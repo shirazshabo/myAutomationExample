@@ -1,2 +1,1 @@
 "# myAutomationExample" 
-"# AutomationProjectExaple" 
