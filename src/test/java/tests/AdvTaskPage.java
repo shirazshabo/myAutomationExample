@@ -9,6 +9,7 @@ import pageobjects.TasksPage;
 public class AdvTaskPage extends BaseTest {
 	
 	@Test
+	// open
 	public void tc01_openAdvTaskPage () throws InterruptedException {
 		TasksPage tasksPage = new TasksPage(driver);
 		tasksPage.pressOnNewAdvTaskBtn();
