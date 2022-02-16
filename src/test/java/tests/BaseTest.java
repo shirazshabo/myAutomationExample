@@ -29,8 +29,7 @@ public class BaseTest {
 	public void setup() throws InterruptedException {
 		// define the driver 
 		//System.setProperty("webdriver.chrome.driver", "C:\\automation\\drivers\\chromedriver.exe");
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver(); 
+		driver = WebDriverManager.chromedriver().driverVersion("97").create(); 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		//		Utils u = new Utils();
