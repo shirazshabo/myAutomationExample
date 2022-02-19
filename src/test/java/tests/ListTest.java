@@ -3,11 +3,13 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import io.qameta.allure.Description;
 import pageobjects.NewTaskPage;
 import pageobjects.TasksPage;
 
 public class ListTest extends BaseTest{
-	@Test
+	@Test(description = "Create new list")
+	@Description("Create new list and check it was added")
 	public void tc01_createNewList() throws InterruptedException {
 		TasksPage tasksPage = new TasksPage(driver);
 		tasksPage.createNewList("shiraz");
@@ -15,7 +17,8 @@ public class ListTest extends BaseTest{
 		sleep(1000);
 	}
 	
-	@Test
+	@Test(description = "Delete List")
+	@Description("Delete list and check it was deleted")
 	public void tc02_deleteList () throws InterruptedException {
 		TasksPage tasksPage = new TasksPage(driver);
 		tasksPage.deleteList("shiraz");
@@ -23,7 +26,8 @@ public class ListTest extends BaseTest{
 		sleep(1000);
 	}
 	
-	@Test
+	@Test(description = "Add new simple task to a specific list")
+	@Description("choose specific list and add to it new simple task")
 	public void tc03_addSimpleTasksToList() throws InterruptedException {
 		TasksPage tasksPage = new TasksPage(driver);
 		tasksPage.createNewList("shiraz");
@@ -35,7 +39,8 @@ public class ListTest extends BaseTest{
 		}
 	}
 	
-	@Test
+	@Test(description = "Add new advanced task (prio2) to a specific list")
+	@Description("choose specific list and add to it new advanced task with priority 2")
 	public void tc04_addAdvTasksToListPrio2() throws InterruptedException {
 		TasksPage tasksPage = new TasksPage(driver);
 		for (int i = 6; i <= 8; i++) {
@@ -47,7 +52,8 @@ public class ListTest extends BaseTest{
 		}
 	}
 	
-	@Test
+	@Test(description = "Add new advanced task (prio1) to a specific list")
+	@Description("choose specific list and add to it new advanced task with priority 1")
 	public void tc05_addAdvTasksToListPrio1() throws InterruptedException {
 		TasksPage tasksPage = new TasksPage(driver);
 		for (int i = 9; i <= 10; i++) {
