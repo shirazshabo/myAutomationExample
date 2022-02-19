@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import io.qameta.allure.Step;
+
 public class NewTaskPage extends SharedPage{
 	@FindBy(css="#duedate")
 	WebElement dueDateField;
@@ -37,6 +39,7 @@ public class NewTaskPage extends SharedPage{
 	
 // Actions
 	// create new adv task
+	@Step("Create New Advanced Task with priority: {prio}, due date: {dueDate}, task name: {taskName}, note: {note} and tag:{tag}")
 	public void createNewAdvTask(String prio, String dueDate, String taskName, String note, String tag) {
 		Select select = new Select (driver.findElement(By.cssSelector("[name='prio']")));
 		select.selectByValue(prio);
@@ -47,11 +50,13 @@ public class NewTaskPage extends SharedPage{
 		click(saveBtn);
 	}
 	
-	// cancel creation 
+	// cancel creation
+	@Step("Cancel the creation of new Adv Task")
 	public void cancel() {
 		click(cancelBtn);
 	}
 	
+	@Step("Go back to previous page")
 	public void goBack() throws InterruptedException {
 		click(backBtn);
 		sleep(1000);
@@ -59,6 +64,7 @@ public class NewTaskPage extends SharedPage{
 	
 	
 	// Validation
+	@Step("validate this is new task page")
 	public boolean isThisNewTaskPage() {
 		if (getText(subTitle).equalsIgnoreCase("new task")) {
 			return true;

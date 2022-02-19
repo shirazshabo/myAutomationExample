@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.qameta.allure.Step;
+
 public class BasePage {
 	WebDriver driver;
 	WebDriverWait wait;
@@ -23,6 +25,7 @@ public class BasePage {
 	}
 
 	// click method
+	@Step("click on elment: {el}")
 	public void click(WebElement el) {
 		highlightElement(el, "black", "RoyalBlue");
 		try {
@@ -33,6 +36,7 @@ public class BasePage {
 	}
 
 	//fillText method
+	@Step("clear text from field: {el} ,and insert instead: {text} ")
 	public void fillText(WebElement el, String text) {
 		highlightElement(el, "black", "RoyalBlue");
 		try {
@@ -44,12 +48,14 @@ public class BasePage {
 	}
 
 	//get element's text method
+	@Step("read the text from: {el}")
 	public String getText(WebElement el) {
 		highlightElement(el, "black", "orange");
 		return el.getText();
 	}
 	
 	// sleep method
+	@Step("wait: {mils} ,milseconds")
 	public void sleep(long mils) {
 		try {
 			Thread.sleep(mils);
@@ -58,6 +64,8 @@ public class BasePage {
 		}
 	}
 	
+	// refresh page
+	@Step("refresh page")
 	public void refresh() {
 		driver.navigate().refresh();
 	}
