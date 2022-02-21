@@ -9,6 +9,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -26,10 +27,11 @@ public class BaseTest {
 	}
 
 	@BeforeClass
-	public void setup() throws InterruptedException {
+	public void setup(ITestContext testContext) throws InterruptedException {
 		// define the driver 
 		//System.setProperty("webdriver.chrome.driver", "C:\\automation\\drivers\\chromedriver.exe");
 		driver = WebDriverManager.chromedriver().driverVersion("97").create(); 
+		testContext.setAttribute("WebDriver", this.driver);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		//		Utils u = new Utils();
